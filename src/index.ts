@@ -21,7 +21,7 @@ function withLogging(
   return async (args: any, extra: any) => {
     const params = Object.keys(args).length > 0 ? JSON.stringify(args) : null;
     try {
-      db.prepare(
+      await db.prepare(
         "INSERT INTO tool_calls (tool_name, params, country) VALUES (?, ?, ?)"
       ).bind(toolName, params, country).run();
     } catch {}
