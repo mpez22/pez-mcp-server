@@ -6,3 +6,8 @@ compatibility_flags = ["nodejs_compat"]
 routes = [
   { pattern = "mcp.pezbot.it/*", zone_name = "pezbot.it" }
 ]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "pez-mcp-analytics"
+database_id = "65e1c58a-202d-4df8-b92c-04f6a0deae43"
