@@ -1,6 +1,8 @@
 # Pez MCP Server
 
-Un MCP server personale che espone la mia expertise professionale come Brand & Communication Strategist. Collegalo a qualsiasi LLM compatibile con MCP e ottieni un'anteprima di come penso, che framework uso e come affronterei le tue sfide strategiche.
+Un MCP server personale che espone oltre 20 anni di esperienza nel mondo digitale — tra imprenditoria, management, consulenza, branding, comunicazione e tecnologie emergenti. Collegalo a qualsiasi LLM compatibile con MCP e ottieni un'anteprima di come penso, che framework uso e come affronterei le tue sfide.
+
+È anche un proof of concept per dimostrare un nuovo livello di interazione tra persone e AI: non un chatbot generico, ma un digital twin interrogabile che ragiona con la tua metodologia e la tua esperienza.
 
 ## Cos'è
 
