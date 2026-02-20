@@ -5,6 +5,7 @@ import { getFrameworksTool } from "./tools/get-frameworks.js";
 import { getExperienceTool } from "./tools/get-experience.js";
 import { consultTool } from "./tools/consult.js";
 import { getContactTool } from "./tools/get-contact.js";
+import { getCareerTool } from "./tools/get-career.js";
 
 function createServer(): McpServer {
   const server = new McpServer({
@@ -46,6 +47,13 @@ function createServer(): McpServer {
     getContactTool.description,
     {},
     getContactTool.handler
+  );
+
+  server.tool(
+    getCareerTool.name,
+    getCareerTool.description,
+    {},
+    getCareerTool.handler
   );
 
   return server;

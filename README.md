@@ -1,28 +1,47 @@
 # Pez MCP Server
 
-Personal MCP server that exposes my professional expertise as a Brand & Communication Strategist. Connect it to any MCP-compatible LLM (Claude, etc.) and get a preview of how I think, what frameworks I use, and how I'd approach your strategic challenges.
+Un MCP server personale che espone la mia expertise professionale come Brand & Communication Strategist. Collegalo a qualsiasi LLM compatibile con MCP e ottieni un'anteprima di come penso, che framework uso e come affronterei le tue sfide strategiche.
 
-## What is this?
+## Cos'è
 
-This is a [Model Context Protocol](https://modelcontextprotocol.io/) server. When you connect it to an AI assistant like Claude, the assistant gains access to my professional profile, strategic frameworks, experience, and can even simulate a consulting conversation using my methodology.
+Questo è un server [Model Context Protocol](https://modelcontextprotocol.io/) che gira su Cloudflare Workers.
 
-Think of it as a "strategic preview" — you ask a question, and the AI responds using my actual frameworks and experience as context.
+Quando lo colleghi a un assistente AI come Claude, l'assistente ottiene accesso al mio profilo professionale, ai miei framework strategici, alla mia esperienza e alla mia carriera completa — e può simulare una conversazione di consulenza usando la mia metodologia.
 
-## Available Tools
+Pensalo come un "assaggio strategico": fai una domanda, e l'AI risponde usando i miei framework e la mia esperienza come contesto.
 
-| Tool | Description |
+## Come è stato costruito
+
+La knowledge base non è stata scritta a mano. Ho costruito un'**interfaccia web di intervista** (`interview/index.html`) — un questionario strutturato in 8 sezioni e 51 domande che copre identità, filosofia, framework per ogni dominio, esperienze, AI e contatto.
+
+Ho risposto a tutte le domande. Le risposte sono state poi compilate nei file JSON strutturati che alimentano il server. Questo approccio garantisce che i dati riflettano il mio modo di pensare e parlare, non un template generico.
+
+I dati sulla carriera sono stati integrati dal mio profilo LinkedIn.
+
+## Tool disponibili
+
+| Tool | Descrizione |
 |------|-------------|
-| `get_profile` | Who I am — background, expertise areas, professional philosophy |
-| `get_frameworks` | How I think — strategic frameworks and methodologies (filterable by domain) |
-| `get_experience` | What I've done — track record and results (filterable by domain) |
-| `consult` | Ask me anything — provide a brief and get a structured strategic response |
-| `get_contact` | How to reach me — contact info and engagement options |
+| `get_profile` | Chi sono — background, aree di expertise, filosofia professionale |
+| `get_frameworks` | Come penso — framework strategici e metodologie (filtrabile per dominio) |
+| `get_experience` | Cosa ho fatto — track record e risultati (filtrabile per dominio) |
+| `get_career` | La mia carriera — timeline completa, education, lingue, clienti notabili |
+| `consult` | Chiedi a Pez — fornisci un brief e ottieni una risposta strategica strutturata |
+| `get_contact` | Come contattarmi — info e opzioni di ingaggio |
 
-## How to Connect
+### Domini
+
+Framework e experience sono organizzati in 4 domini:
+- **brand_positioning** — posizionamento e identità di brand
+- **communication_planning** — piani di comunicazione
+- **content_strategy** — strategia dei contenuti
+- **ai_strategy** — adozione e strategia AI nel business
+
+## Come collegarlo
 
 ### Claude Desktop
 
-Add this to your Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
+Aggiungi questo alla config di Claude Desktop (`~/Library/Application Support/Claude/claude_desktop_config.json` su macOS):
 
 ```json
 {
@@ -40,91 +59,62 @@ Add this to your Claude Desktop config (`~/Library/Application Support/Claude/cl
 claude mcp add pez --transport streamable-http https://mcp.pezbot.it
 ```
 
-### Other MCP Clients
+### Altri client MCP
 
-Any MCP client that supports Streamable HTTP transport can connect using:
+Qualsiasi client MCP con supporto Streamable HTTP:
 
 ```
 https://mcp.pezbot.it
 ```
 
-## Example Prompts
+## Prompt di esempio
 
-Once connected, try asking:
+Una volta collegato, prova a chiedere:
 
-1. **Get to know Pez:**
-   > "Who is Pez and what does he do?"
+- **Conosci Pez:** "Chi è Pez e cosa fa?"
+- **Esplora i framework:** "Che framework usa Pez per il brand positioning?"
+- **Consulenza strategica:** "Sto lanciando un SaaS B2B nel mercato italiano. Lo spazio ha due player dominanti. Come dovrei approcciare il posizionamento?"
+- **Carriera:** "Raccontami la carriera di Pez — dove ha lavorato e cosa ha costruito?"
+- **Contatto:** "Vorrei lavorare con Pez. Quali sono le opzioni?"
 
-2. **Explore frameworks:**
-   > "What frameworks does Pez use for brand positioning?"
-
-3. **Get strategic advice (the killer feature):**
-   > "I'm launching a B2B SaaS product in the Italian market. The space has two dominant players. How should I approach positioning and go-to-market communication?"
-
-4. **Specific domain questions:**
-   > "I need to build a thought leadership strategy for our CEO. What would Pez recommend?"
-
-5. **Contact for real engagement:**
-   > "I'd like to work with Pez. What are the options?"
-
-## For Me (Development & Deploy)
-
-### Prerequisites
-
-- Node.js 18+
-- A Cloudflare account
-- Wrangler CLI (`npm install -g wrangler`)
-
-### Local Development
-
-```bash
-npm install
-npm run dev
-```
-
-The server starts at `http://localhost:8787`. MCP endpoint: `http://localhost:8787`.
-
-### Deploy to Cloudflare Workers
-
-```bash
-wrangler login    # First time only
-npm run deploy
-```
-
-### Updating Content
-
-All content lives in `src/data/`:
-
-- **`profile.json`** — Your bio, expertise, philosophy
-- **`frameworks.json`** — Strategic frameworks by domain (brand_positioning, communication_planning, content_strategy)
-- **`experience.json`** — Case studies by domain
-- **`contact.json`** — Contact info and engagement options
-
-Edit the JSON files, then `npm run deploy` to push updates.
-
-### Project Structure
+## Struttura del progetto
 
 ```
 pez-mcp-server/
 ├── src/
-│   ├── index.ts              # Entry point, MCP server setup, Cloudflare Worker handler
+│   ├── index.ts                # Entry point, Cloudflare Worker handler
 │   ├── tools/
-│   │   ├── get-profile.ts    # Tool: who I am
-│   │   ├── get-frameworks.ts # Tool: how I think
-│   │   ├── get-experience.ts # Tool: what I've done
-│   │   ├── consult.ts        # Tool: ask Pez (the killer tool)
-│   │   └── get-contact.ts    # Tool: how to reach me
+│   │   ├── get-profile.ts      # Chi sono
+│   │   ├── get-frameworks.ts   # Come penso
+│   │   ├── get-experience.ts   # Cosa ho fatto
+│   │   ├── get-career.ts       # La mia carriera
+│   │   ├── consult.ts          # Chiedi a Pez (il tool principale)
+│   │   └── get-contact.ts      # Come contattarmi
 │   └── data/
-│       ├── profile.json      # Bio and expertise
-│       ├── frameworks.json   # Methodological frameworks by domain
-│       ├── experience.json   # Experience and results
-│       └── contact.json      # Contact and engagement options
-├── wrangler.toml             # Cloudflare Workers config
-├── package.json
+│       ├── profile.json        # Bio, expertise, filosofia
+│       ├── frameworks.json     # Framework per dominio
+│       ├── experience.json     # Case study per dominio
+│       ├── career.json         # Timeline carriera, education, lingue
+│       └── contact.json        # Contatti e opzioni di ingaggio
+├── interview/
+│   └── index.html              # Interfaccia di intervista per knowledge mapping
+├── wrangler.toml               # Config Cloudflare Workers
 ├── tsconfig.json
+├── CLAUDE.md                   # Istruzioni per Claude Code
 └── README.md
 ```
 
-## License
+## Work in progress
 
-MIT
+Questo progetto è in continua evoluzione. Ho in mente di aggiungere altre funzionalità — più framework, più case study, tool più sofisticati — e non escludo di trasformarlo in un prodotto SaaS aperto a tutti per creare i propri digital twin interrogabili via LLM.
+
+Se l'idea ti incuriosisce, scrivimi.
+
+## Development
+
+```bash
+npm install
+npm run dev          # Dev locale → http://localhost:8787
+npm run deploy       # Deploy su Cloudflare Workers
+npm run typecheck    # Verifica TypeScript
+```

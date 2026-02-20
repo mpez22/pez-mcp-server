@@ -1,0 +1,130 @@
+{
+  "timeline": [
+    {
+      "company": "Arsenalia",
+      "role": "Brand & Communications Manager",
+      "period": "Jan 2025 – Present",
+      "location": "Padova, Italy",
+      "description": "Responsabile della costruzione dell'ecosistema di brand e comunicazione per un'azienda di servizi IT/consulting nata dalla fusione di più sotto-aziende. Gestione della transizione culturale interna e creazione da zero di tutti gli strumenti di comunicazione verso il mercato.",
+      "tags": ["B2B", "brand-building", "change-management", "IT-consulting"]
+    },
+    {
+      "company": "Vulcano Agency",
+      "role": "Managing Director",
+      "period": "Nov 2023 – Dec 2024",
+      "location": "Italy",
+      "description": "Direzione generale di un'agenzia creativa con 180 talenti. Clienti: Bulgari, Lamborghini, Tod's, Golden Goose, Vibram. Gestione operativa, sviluppo new business, supervisione strategica dei progetti.",
+      "clients": ["Bulgari", "Lamborghini", "Tod's", "Golden Goose", "Vibram"],
+      "tags": ["agency", "luxury", "fashion", "management", "creative"]
+    },
+    {
+      "company": "Abstract Toys",
+      "role": "Founder",
+      "period": "Jun 2022 – Dec 2024",
+      "location": "Italy",
+      "description": "Studio creativo specializzato in Web3, fondato per esplorare le applicazioni di blockchain e NFT nel mondo del branding e del marketing. Clienti: Enel, Telepass. Progetti che combinano tecnologia emergente e strategia di brand.",
+      "clients": ["Enel", "Telepass"],
+      "tags": ["Web3", "blockchain", "NFT", "startup", "founder"]
+    },
+    {
+      "company": "Freelance",
+      "role": "Fractional Executive / Consultant",
+      "period": "Jan 2021 – Jun 2022",
+      "location": "Italy",
+      "description": "Consulenza strategica come fractional executive per gruppi internazionali. Collaborazione con IPG Group e McCann Worldgroup su progetti di comunicazione e strategia digitale.",
+      "clients": ["IPG Group", "McCann Worldgroup"],
+      "tags": ["fractional", "consulting", "international", "advertising"]
+    },
+    {
+      "company": "AQuest (WPP)",
+      "role": "Head of International Strategy / Director Chinese Market",
+      "period": "Jan 2019 – Dec 2020",
+      "location": "Italy / China",
+      "description": "Doppio ruolo in un'agenzia digitale poi acquisita da WPP. Come Head of International Strategy, guidato l'espansione internazionale e il lancio dell'unità 'Edgeless' focalizzata su innovazione e mercati emergenti. Come Director Chinese Market, creato e guidato l'offerta 'China Digital Safari' per brand occidentali che volevano entrare nel mercato cinese.",
+      "tags": ["WPP", "international", "China", "digital", "innovation", "acquisition"]
+    },
+    {
+      "company": "OBOR Consulting",
+      "role": "Founder & CEO",
+      "period": "Jun 2017 – Aug 2018",
+      "location": "Italy / China",
+      "description": "Fondata per aiutare aziende italiane a fare business in Cina e viceversa. Consulenza su digital marketing cross-border, adattamento culturale, strategie di ingresso nel mercato cinese. L'azienda è stata acquisita da Cifnews, il più grande media cinese sul cross-border e-commerce.",
+      "exit": "Acquisita da Cifnews",
+      "tags": ["founder", "China", "cross-border", "acquisition", "Made-in-Italy"]
+    },
+    {
+      "company": "Young Digitals",
+      "role": "Co-Founder & Managing Partner",
+      "period": "Oct 2011 – Jun 2017",
+      "location": "Padova, Italy",
+      "description": "Co-fondata e cresciuta fino a 50+ persone. Agenzia di comunicazione digitale con focus su social media, content e strategia. Clienti: Coca-Cola, Lamborghini, Mars, Audi, Carlsberg, Bulgari, Trussardi. Una delle agenzie digitali più riconosciute in Italia nel periodo.",
+      "clients": ["Coca-Cola", "Lamborghini", "Mars", "Audi", "Carlsberg", "Bulgari", "Trussardi"],
+      "tags": ["founder", "agency", "social-media", "content", "growth"]
+    },
+    {
+      "company": "Hackvertise",
+      "role": "Founder",
+      "period": "Mar 2010 – Sep 2011",
+      "location": "Italy",
+      "description": "Progetto imprenditoriale focalizzato su approcci non convenzionali al marketing digitale. Precursore dell'esperienza che poi sarebbe confluita in Young Digitals.",
+      "tags": ["founder", "startup", "digital-marketing"]
+    },
+    {
+      "company": "Catalyst srl",
+      "role": "Digital Marketing Consultant",
+      "period": "Jun 2008 – Jul 2011",
+      "location": "Italy",
+      "description": "Consulenza su strategie di marketing digitale per clienti B2B e B2C. Periodo di maturazione delle competenze digitali che avrebbero poi portato alla fondazione di Young Digitals.",
+      "tags": ["consulting", "digital-marketing", "B2B", "B2C"]
+    },
+    {
+      "company": "Miva Inc.",
+      "role": "Affiliate Marketing Specialist",
+      "period": "Jul 2007 – May 2008",
+      "location": "Germany",
+      "description": "Specialista in affiliate marketing per una delle principali piattaforme e-commerce dell'epoca. Prima esperienza internazionale significativa.",
+      "tags": ["affiliate-marketing", "e-commerce", "international"]
+    },
+    {
+      "company": "Studio Cappello",
+      "role": "Copywriter",
+      "period": "Feb 2006 – Jul 2007",
+      "location": "Padova, Italy",
+      "description": "Scrittura di testi per il web e campagne digitali. Periodo in cui la passione per il linguaggio si è fusa con il digitale.",
+      "tags": ["copywriting", "web", "digital"]
+    },
+    {
+      "company": "Lynx S.p.A.",
+      "role": "Full Stack Developer",
+      "period": "Apr 2004 – Sep 2005",
+      "location": "Padova, Italy",
+      "description": "Primo lavoro: sviluppatore full stack. L'esperienza tecnica alle fondamenta della carriera — la capacità di capire (e costruire) la tecnologia che poi avrebbe definito il lavoro di comunicazione digitale.",
+      "tags": ["developer", "full-stack", "tech"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Università degli Studi di Padova",
+      "degree": "Laurea triennale in Lettere — Linguaggi e Tecniche di Scrittura",
+      "year": 2012
+    },
+    {
+      "institution": "Liceo Classico \"C. Marchesi\"",
+      "type": "Diploma",
+      "period": "1996 – 2001"
+    }
+  ],
+  "languages": [
+    { "language": "Italiano", "level": "Madrelingua" },
+    { "language": "Inglese", "level": "Professionale completo" },
+    { "language": "Cinese (Mandarino)", "level": "Elementare" }
+  ],
+  "notable_clients": ["Coca-Cola", "Lamborghini", "Mars", "Audi", "Carlsberg", "Bulgari", "Trussardi", "Tod's", "Golden Goose", "Vibram", "Enel", "Telepass", "Netflix", "IPG Group", "McCann Worldgroup"],
+  "key_highlights": [
+    "2 aziende acquisite (OBOR Consulting → Cifnews, AQuest → WPP)",
+    "4 aziende fondate (Hackvertise, Young Digitals, OBOR Consulting, Abstract Toys)",
+    "Da sviluppatore full stack a Managing Director di un'agenzia da 180 persone",
+    "Esperienza cross-border Italia-Cina unica nel panorama italiano",
+    "Carriera che attraversa tech, copywriting, digital marketing, advertising, consulting e AI"
+  ]
+}

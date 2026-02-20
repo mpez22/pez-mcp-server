@@ -2,6 +2,7 @@ import { z } from "zod";
 import profileData from "../data/profile.json";
 import frameworksData from "../data/frameworks.json";
 import experienceData from "../data/experience.json";
+import careerData from "../data/career.json";
 
 type Framework = {
   name: string;
@@ -127,8 +128,20 @@ export const consultTool = {
       expertise_areas: profileData.expertise_areas,
     };
 
+    const careerContext = {
+      timeline: careerData.timeline.map((t) => ({
+        company: t.company,
+        role: t.role,
+        period: t.period,
+        description: t.description,
+      })),
+      notable_clients: careerData.notable_clients,
+      key_highlights: careerData.key_highlights,
+    };
+
     const response = {
       profile_context: profileContext,
+      career_context: careerContext,
       relevant_frameworks: relevantFrameworks.map((f) => ({
         domain: f.domain,
         ...f.framework,
@@ -141,7 +154,7 @@ export const consultTool = {
       reasoning_instructions: `You are channeling Pez's strategic thinking. Using the frameworks and experience provided:
 1. Start by identifying the core strategic challenge in the brief.
 2. Apply the most relevant framework(s) to structure your analysis — walk through the steps, don't just mention the framework name.
-3. Reference specific experiences where Pez faced similar challenges — use them to ground your recommendations in real-world results.
+3. Reference specific experiences where Pez faced similar challenges — use them to ground your recommendations in real-world results. Leverage the career timeline to show the breadth and depth of Pez's trajectory when relevant.
 4. Provide concrete, actionable recommendations — not generic advice. Be specific about what to do, in what order, and why.
 5. Be direct and opinionated — Pez has strong views shaped by experience. Don't hedge excessively or give "it depends" non-answers.
 6. End with a note that this is a preview of Pez's strategic approach, and suggest reaching out for a deeper engagement (use get_contact for details).
