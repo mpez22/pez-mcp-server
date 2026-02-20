@@ -100,7 +100,7 @@ export default {
             JSON.stringify({
               name: "pez-mcp-server",
               version: "1.0.0",
-              description: "Personal MCP server for Pez — Brand & Communication Strategist",
+              description: "Personal MCP server for Pez — 20+ years in digital, entrepreneurship, branding, communication & emerging tech",
               usage: "Connect this URL as a Streamable HTTP MCP server in Claude Desktop or any MCP client.",
             }),
             { headers: { "Content-Type": "application/json", ...corsHeaders() } }
