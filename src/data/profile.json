@@ -1,0 +1,22 @@
+{
+  "name": "Marco Pezzano",
+  "title": "Brand & Communication Strategist, Builder, AI Experimenter",
+  "bio": "Sono un builder — una persona che trova il modo di costruire ciò che prima non c'era. In oltre 20 anni di carriera ho fatto lo sviluppatore, il copywriter, il project manager, il digital strategist, l'imprenditore, il consulente per l'internazionalizzazione, il brand manager e il communication manager. Questa varietà non è dispersione: è curiosità applicata, e ogni esperienza ha costruito un pezzo del mio modo di vedere le cose.\n\nConvivo da sempre con un'ambivalenza tra la passione per il linguaggio — ho un background classico, una laurea in Linguaggi e Tecniche di Scrittura e un grande rispetto per i classici della retorica, da Gorgia a Quintiliano — e la passione per la sperimentazione tecnologica. Dai social media nel 2005 al digitale cinese nel 2012, dal Web3 nel 2021 all'AI dal 2022: ho la capacità di trovarmi nel posto giusto al momento giusto quando i trend esplodono, e di conoscere le persone più rilevanti in quei contesti.\n\nSono un imprenditore che ha fatto il manager e un manager che ha fatto l'imprenditore. Ho costruito le mie agenzie, gestito team, fatto hiring, visto aziende da dentro e da fuori. Questa doppia prospettiva mi permette di capire cosa vedono gli imprenditori, ma anche cosa non vedono — e dove le organizzazioni creano inerzia o erodono margini senza rendersene conto.",
+  "expertise_areas": [
+    {
+      "area": "Brand Strategy & Communication",
+      "description": "Gestione di campagne di comunicazione e marketing per brand B2C e B2B nel mondo digitale. Ho costruito e gestito agenzie di comunicazione, quindi conosco sia i principi della comunicazione in senso teorico sia la loro applicazione in un contesto di business reale. So giudicare la proposta di un'agenzia, valutare la bellezza di una campagna e distinguere chi ha le carte in regola da chi no."
+    },
+    {
+      "area": "Emerging Technologies & AI",
+      "description": "Capacità di individuare i trend tecnologici quando stanno nascendo e tradurli in applicazioni concrete. Uso quotidianamente strumenti di intelligenza artificiale e costruisco prodotti AI-native: SaaS, estensioni browser, sistemi agentici. Sperimento con il coding agentico e aiuto le aziende a capire dove l'AI ha senso e dove è solo hype."
+    },
+    {
+      "area": "Business Vision & Organizational Psychology",
+      "description": "Visione sulle dinamiche delle organizzazioni che generano valore, maturata attraverso esperienze dirette come imprenditore e indirette come manager. Attenzione particolare alla psicologia delle organizzazioni: ciò che accade nelle aziende è funzione diretta degli interessi delle singole persone che le compongono. Se si vuole far passare un'idea, bisogna ragionare sia sull'organizzazione nella sua interezza che sulla somma delle sue parti."
+    }
+  ],
+  "philosophy": "Credo nell'integrità, nell'onestà e nel dire ai clienti quello che penso realmente del loro business. Non indoro la pillola. Sono un perfezionista che ha imparato ad accettare i compromessi, ma non accetto di vendere cose che non servono — 'if all you have is a hammer, all you see is a nail', e io ho sempre cercato di non avere mai solo un martello.\n\nCredo che la comunicazione, senza principi radicati e valori, sia uno sterile esercizio. Credo nel suo valore trasformativo e nel suo dovere morale di plasmare la realtà per il bene.\n\nParto sempre dal perché e da un'analisi olistica dello scenario: una fase introspettiva e una di analisi del mercato. Faccio tantissima ricerca perché mi sento sempre incompetente — non do mai nulla per scontato. Poggio questo approccio su oltre 20 anni di esperienza che mi forniscono un'infinità di benchmark su cui valutare le mie scelte e le idee dei clienti.",
+  "years_of_experience": "22",
+  "industries": ["Advertising & Communication", "Fashion & Luxury", "Automotive", "GDO & Retail", "Travel & Hospitality", "B2B Services & System Integration", "Technology & SaaS", "Cross-border (China/Italy)", "Web3 & Blockchain"]
+}

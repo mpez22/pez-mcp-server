@@ -1,0 +1,81 @@
+{
+  "brand_positioning": [
+    {
+      "name": "Gnōthi Seautón — Conosci Te Stesso",
+      "description": "Un framework basato sulla massima greca del 'conosci te stesso', applicato al brand. L'azienda deve fare un'attenta analisi della propria identità, sia in senso sincronico (chi è oggi) che diacronico (chi vuole e può diventare). Il posizionamento nasce dall'incrocio tra ambizione interna e possibilità esterne.",
+      "when_to_use": "Ogni volta che un brand deve posizionarsi o riposizionarsi. Funziona per brand nuovi (nessuno storico, tutto da guadagnare) e brand esistenti (storico da valorizzare, percezione da aggiornare). Il framework è universale perché tutte le organizzazioni devono verificare le condizioni interne ed esterne al proprio business.",
+      "steps": [
+        "Capisci chi sei: individua i valori fondativi, il motivo per cui fai quello che fai come azienda. Guarda dentro l'organizzazione con onestà.",
+        "Decidi chi vuoi essere: definisci le ambizioni di business in termini di crescita e posizionamento, sia quantitative che qualitative. Fai emergere la vision imprenditoriale.",
+        "Capisci chi puoi essere: confrontati col mercato. Analizza i competitor, i constraint economici, la percezione del target. Lo spazio che puoi occupare non è infinito — fai i conti con la realtà."
+      ],
+      "key_principles": [
+        "Non si può passare alla pratica senza un profondo lavoro di strategia. Troppi manager e imprenditori si buttano a raccontare storie senza aver fatto l'analisi a tavolino.",
+        "Tutti i brand sono diversi, come le persone, perché i brand sono fatti da persone. Valori non autentici, copiati da un template, si sgamano subito.",
+        "Il budget non è mai infinito. Una strategia che non fa i conti con le risorse disponibili è un esercizio accademico, non un piano azionabile.",
+        "Il posizionamento deve tener conto non solo del mercato esterno, ma anche delle dinamiche interne all'organizzazione — le persone che devono eseguire la strategia hanno i loro interessi e le loro resistenze."
+      ]
+    }
+  ],
+  "communication_planning": [
+    {
+      "name": "Communication Cascade",
+      "description": "Un framework costruito in oltre 20 anni di attività nel mondo della comunicazione. Ogni elemento deve derivare dagli altri — non ci devono essere spazi di non consequenzialità tra i vari passaggi. Si parte dagli obiettivi di business e si scende fino alla content strategy, passando per l'ecosistema di brand, il budget, il posizionamento e la channel strategy.",
+      "when_to_use": "Quando un brand vuole intraprendere una ristrutturazione o un passaggio importante nel suo ciclo di vita. Per brand già avviati su attivazioni singole o campagne, il modello è adattabile ma la struttura logica resta la stessa.",
+      "steps": [
+        "Definisci gli obiettivi di business: quali risultati economici e di crescita vuole raggiungere il brand.",
+        "Analizza l'ecosistema di brand: cosa c'è già, cosa va costruito, qual è l'awareness attuale e quella target.",
+        "Fai i conti con il budget: è un constraint fondamentale. Se nel brief non è specificato, chiederlo con insistenza — senza budget si rischia di sovrastimare o sottostimare tutto.",
+        "Definisci il posizionamento: cosa il brand vuole e può essere nel mercato.",
+        "Costruisci la channel strategy: analizza i canali a disposizione, suddividendoli in owned, earned e paid. Valuta se il brand può permettersi certi canali e se ha senso aprirne di nuovi.",
+        "Realizza la content strategy: solo a questo punto, con tutti gli elementi precedenti come fondamenta."
+      ],
+      "key_principles": [
+        "Mai ragionare a budget infinito. Il budget è l'informazione più importante — senza, il rischio di produrre una strategia inapplicabile è altissimo.",
+        "Ogni passaggio deve derivare logicamente dal precedente. Se c'è un salto di consequenzialità, la strategia ha un buco.",
+        "Molto spesso i piani falliscono per le persone, non per le idee. Gli interessi individuali dentro le organizzazioni possono generare inerzia o sabotaggio. Bisogna saper leggere il cliente anche umanamente.",
+        "I consulenti sbagliano quando non interpretano bene l'identità del brand e propongono idee bellissime sulla carta ma inapplicabili a quel contesto."
+      ]
+    }
+  ],
+  "content_strategy": [
+    {
+      "name": "Voice-First Content Strategy",
+      "description": "Un approccio alla content strategy che parte dalla voce del brand e dalla sua audience, prima ancora di pensare ai canali o ai formati. La domanda iniziale è sempre: perché? E per chi? Solo dopo arrivano il come e il dove.",
+      "when_to_use": "Quando un brand dice 'dobbiamo fare contenuti' senza avere una direzione chiara. Quando serve passare da una richiesta vaga a una strategia vera. Per situazioni più tattiche (intercettare un trend), il framework si adatta ma non si abbandona del tutto.",
+      "steps": [
+        "Chiediti perché: qual è l'obiettivo di quei contenuti.",
+        "Chiediti per chi: a chi sono rivolti, che caratteristiche ha l'audience, cosa si aspetta.",
+        "Definisci il background valoriale: da quali valori del brand partono i contenuti.",
+        "Mappa i canali: quali sono disponibili, quali aprire, sia online che offline. Non tutti i canali sono adatti a tutti i brand.",
+        "Fai i conti con il budget: cambia tutto."
+      ],
+      "key_principles": [
+        "Va trovata la propria voce. La voce di un brand dipende dai suoi valori e dalla relazione con la propria audience — e va replicata coerentemente su tutti i canali, adattata alle specificità di ciascuno.",
+        "Se il tono di voce non è confacente con un canale, quel brand su quel canale non ci deve stare. Meglio essere assenti che presenti in modo incoerente.",
+        "Seguire un trend senza saperlo interpretare è cringe. L'ideale: capire quali trend esistono, su quali puoi far leva, come interpretarli invece che copiarli.",
+        "Thought leadership richiede costanza (gli algoritmi premiano la regolarità) e autenticità (trovare il proprio elemento distintivo, non scimmiottare altri)."
+      ]
+    }
+  ],
+  "ai_strategy": [
+    {
+      "name": "AI Adoption — Start from Why",
+      "description": "Un approccio pragmatico all'adozione dell'AI nel business che parte sempre dal perché, come insegna Simon Sinek. Capire perché un'azienda vuole usare l'AI è il primo passo per definire se e quali strumenti siano adatti. L'AI non è una soluzione universale, ma nel 2026 nessuna organizzazione può permettersi di ignorarla.",
+      "when_to_use": "Quando un'azienda dice 'vogliamo usare l'AI ma non sappiamo da dove partire'. Quando serve distinguere tra hype e valore reale. Quando l'organizzazione ha bisogno di democratizzare l'accesso all'AI a tutte le funzioni aziendali, non solo quelle tecniche.",
+      "steps": [
+        "Parti dal perché: capire la motivazione reale dietro la richiesta di adozione dell'AI.",
+        "Identifica i processi candidati: spesso si tratta di rendere strutturati dati non strutturati, o di automatizzare flussi di lavoro manuali.",
+        "Valuta il potenziale di customizzazione: con gli strumenti di coding agentico attuali, le aziende possono costruirsi strumenti su misura invece di adattarsi a soluzioni enterprise generiche.",
+        "Democratizza l'accesso: l'AI deve essere a pannaggio di tutte le funzioni aziendali, non solo di quelle tecniche.",
+        "Considera la dimensione comunicativa: far sapere al mondo che l'azienda è AI-driven ha un peso anche come strumento di storytelling e posizionamento."
+      ],
+      "key_principles": [
+        "Nel 2026 tutti hanno bisogno quantomeno di familiarizzare con l'AI — è un'evoluzione da cui nessuno può prescindere, in nessuna industry. È come internet nel 1995.",
+        "Lo stato attuale dell'AI è il peggior stato in cui la vedremo mai — da qui si può solo migliorare. Chi giudica l'AI per i suoi limiti attuali commette una doppia fallacia logica.",
+        "Le professioni puramente intellettuali — consulenti, sviluppatori, creativi — rischiano seriamente di essere soppiantate se non evolvono. Il ruolo umano diventerà quello di orchestratore e decision-maker.",
+        "Il paradigma si sta invertendo: non sono più le organizzazioni che devono adattarsi agli strumenti enterprise (CRM, ERP), ma gli strumenti che possono essere costruiti su misura per i processi dell'azienda."
+      ]
+    }
+  ]
+}

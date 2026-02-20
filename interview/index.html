@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pez — Knowledge Mapping Interview</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --surface-hover: #222;
+    --border: #2a2a2a;
+    --text: #e0e0e0;
+    --text-muted: #888;
+    --accent: #6366f1;
+    --accent-dim: #4f46e5;
+    --tone-tag: #f59e0b;
+    --green: #22c55e;
+    --radius: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .layout {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 280px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-header {
+    padding: 0 20px 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+
+  .sidebar-header h1 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar-header p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .nav-items {
+    flex: 1;
+    padding: 0 12px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.15s;
+    margin-bottom: 2px;
+  }
+
+  .nav-item:hover { background: var(--surface-hover); }
+
+  .nav-item.active {
+    background: var(--accent);
+    color: white;
+  }
+
+  .nav-item .step-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  .nav-item.active .step-num {
+    background: rgba(255,255,255,0.2);
+  }
+
+  .nav-item.completed .step-num {
+    background: var(--green);
+    color: white;
+  }
+
+  .nav-item .section-progress {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .nav-item.active .section-progress { color: rgba(255,255,255,0.7); }
+
+  .sidebar-footer {
+    padding: 16px 12px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 16px;
+  }
+
+  .progress-bar-container {
+    padding: 0 8px;
+    margin-bottom: 12px;
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .btn-export {
+    display: block;
+    width: calc(100% - 16px);
+    margin: 0 8px;
+    padding: 10px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .btn-export:hover { background: var(--accent-dim); }
+
+  .btn-reset {
+    display: block;
+    width: calc(100% - 16px);
+    margin: 8px 8px 0;
+    padding: 8px;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-reset:hover { border-color: #ef4444; color: #ef4444; }
+
+  /* Main content */
+  .main {
+    margin-left: 280px;
+    flex: 1;
+    padding: 48px 64px;
+    max-width: 840px;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+
+  .section-header p {
+    color: var(--text-muted);
+    font-size: 14px;
+    max-width: 560px;
+  }
+
+  .question-block {
+    margin-bottom: 36px;
+  }
+
+  .question-label {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .tone-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--tone-tag);
+    background: rgba(245, 158, 11, 0.12);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  .maps-to {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    transition: border-color 0.15s;
+  }
+
+  textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  textarea::placeholder {
+    color: #555;
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .btn {
+    padding: 10px 24px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: none;
+  }
+
+  .btn-prev {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-prev:hover { background: var(--surface-hover); }
+
+  .btn-next {
+    background: var(--accent);
+    color: white;
+  }
+
+  .btn-next:hover { background: var(--accent-dim); }
+
+  .btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .saved-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--green);
+    color: white;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .saved-indicator.show { opacity: 1; }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>Pez Interview</h1>
+      <p>Knowledge mapping per il MCP server</p>
+    </div>
+    <nav class="nav-items" id="nav"></nav>
+    <div class="sidebar-footer">
+      <div class="progress-bar-container">
+        <div class="progress-label">
+          <span>Progresso</span>
+          <span id="progress-text">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <button class="btn-export" onclick="exportJSON()">Esporta risposte</button>
+      <button class="btn-reset" onclick="resetAll()">Reset tutto</button>
+    </div>
+  </aside>
+
+  <main class="main" id="content"></main>
+</div>
+
+<div class="saved-indicator" id="saved">Salvato</div>
+
+<script>
+const SECTIONS = [
+  {
+    id: "identity",
+    title: "Identita e posizionamento",
+    subtitle: "Chi sei, cosa fai, come ti presenti al mondo.",
+    questions: [
+      {
+        id: "1_1",
+        text: "Se incontrassi qualcuno a una cena e ti chiedesse \"cosa fai nella vita?\", cosa rispondi? Non la versione da LinkedIn \u2014 quella vera.",
+        maps_to: "profile.json > bio",
+        placeholder: "Raccontalo come lo diresti davvero, a voce..."
+      },
+      {
+        id: "1_2",
+        text: "Che titolo ti dai? E se potessi inventarne uno che nessuno usa, quale sarebbe?",
+        maps_to: "profile.json > title",
+        placeholder: "Il titolo \"ufficiale\" e quello che vorresti..."
+      },
+      {
+        id: "1_3",
+        text: "Se dovessi dividere il tuo lavoro in tre (o quattro) grandi aree, quali sarebbero? Per ognuna: cosa fai concretamente e cosa ti riesce particolarmente bene?",
+        maps_to: "profile.json > expertise_areas",
+        placeholder: "Area 1: ...\nArea 2: ...\nArea 3: ..."
+      },
+      {
+        id: "1_4",
+        text: "Da quanti anni fai questo mestiere? E c'e stato un momento preciso in cui hai capito che questo era il tuo lavoro, non solo un lavoro?",
+        maps_to: "profile.json > years_of_experience, bio",
+        placeholder: "Anni di esperienza e il momento di svolta..."
+      },
+      {
+        id: "1_5",
+        text: "In quali settori hai lavorato di piu? E in quale ti sei trovato piu a tuo agio \u2014 e in quale meno?",
+        maps_to: "profile.json > industries",
+        placeholder: "Settori, affinita, e dove non torneresti..."
+      },
+      {
+        id: "1_6",
+        text: "Quando scrivi per te stesso \u2014 una bio, un post, un'email a un potenziale cliente \u2014 che registro usi? Tendi a essere formale, diretto, ironico, tecnico?",
+        maps_to: "tono di voce generale",
+        tone: true,
+        placeholder: "Come parli, come scrivi, il tuo stile..."
+      }
+    ]
+  },
+  {
+    id: "philosophy",
+    title: "Filosofia e principi",
+    subtitle: "In cosa credi, cosa ti differenzia, le tue opinioni forti.",
+    questions: [
+      {
+        id: "2_1",
+        text: "Se dovessi riassumere la tua filosofia di lavoro in una frase \u2014 il principio che non tradiresti mai \u2014 quale sarebbe?",
+        maps_to: "profile.json > philosophy",
+        placeholder: "La tua regola d'oro..."
+      },
+      {
+        id: "2_2",
+        text: "Qual e la cosa piu sbagliata che vedi fare regolarmente nel tuo settore?",
+        maps_to: "profile.json > philosophy (per contrasto)",
+        placeholder: "Cosa ti fa venire voglia di sbattere la testa contro il muro..."
+      },
+      {
+        id: "2_3",
+        text: "Se un cliente ti chiedesse \"perche dovrei lavorare con te e non con un altro strategist?\", cosa rispondi? Quella vera.",
+        maps_to: "profile.json > philosophy (differenziazione)",
+        placeholder: "Il tuo valore unico, senza diplomazia..."
+      },
+      {
+        id: "2_4",
+        text: "Quando affronti un problema nuovo \u2014 un brief complicato, un settore che non conosci \u2014 qual e la prima cosa che fai? Come parte il tuo ragionamento?",
+        maps_to: "reasoning pattern per il tool consult",
+        tone: true,
+        placeholder: "Il tuo processo mentale, step by step..."
+      },
+      {
+        id: "2_5",
+        text: "C'e qualcosa in cui credi professionalmente che la maggior parte dei tuoi colleghi non condivide? Una posizione scomoda?",
+        maps_to: "profile.json > philosophy (opinione forte)",
+        placeholder: "La tua hot take professionale..."
+      },
+      {
+        id: "2_6",
+        text: "Quando presenti una strategia a un cliente e non sei d'accordo con la direzione che vogliono prendere, come glielo dici?",
+        maps_to: "stile di comunicazione professionale",
+        tone: true,
+        placeholder: "Diretto? Diplomatico? Usi metafore? Porti dati?"
+      },
+      {
+        id: "2_7",
+        text: "Chi ti ha formato di piu come professionista? Non solo scuole o corsi \u2014 anche libri, persone, esperienze.",
+        maps_to: "profile.json > bio (background intellettuale)",
+        placeholder: "Le influenze che ti hanno modellato..."
+      }
+    ]
+  },
+  {
+    id: "brand_positioning",
+    title: "Framework: Brand Positioning",
+    subtitle: "Come pensi e lavori quando si tratta di posizionamento.",
+    questions: [
+      {
+        id: "3_1",
+        text: "Quando un'azienda dice \"non sappiamo chi siamo sul mercato\" o \"dobbiamo riposizionarci\", da dove parti? Qual e il tuo approccio?",
+        maps_to: "frameworks.json > brand_positioning[0] > description, steps",
+        placeholder: "Il tuo processo, dall'inizio..."
+      },
+      {
+        id: "3_2",
+        text: "Questo approccio ha un nome? Come lo chiameresti? E se dovessi spiegarlo in 5 step, quali sarebbero?",
+        maps_to: "frameworks.json > brand_positioning[0] > name, steps",
+        placeholder: "Nome del framework:\n\nStep 1:\nStep 2:\nStep 3:\nStep 4:\nStep 5:"
+      },
+      {
+        id: "3_3",
+        text: "In che tipo di situazione usi questo framework? E c'e un tipo di situazione dove NON funziona, dove devi usare qualcos'altro?",
+        maps_to: "frameworks.json > brand_positioning[0] > when_to_use",
+        placeholder: "Quando si e quando no..."
+      },
+      {
+        id: "3_4",
+        text: "Quali sono i principi non negoziabili che guidano il tuo lavoro di brand positioning?",
+        maps_to: "frameworks.json > brand_positioning[0] > key_principles",
+        placeholder: "Le regole che non infrangi mai..."
+      },
+      {
+        id: "3_5",
+        text: "Hai un altro metodo o strumento per situazioni diverse? Per esempio, per un brand che esiste gia vs. uno che parte da zero, o B2B vs. B2C?",
+        maps_to: "frameworks.json > brand_positioning[1]",
+        placeholder: "Un secondo approccio, se ne hai uno..."
+      },
+      {
+        id: "3_6",
+        text: "Cosa distingue un positioning fatto bene da uno fatto col template scaricato da internet?",
+        maps_to: "opinione forte su brand positioning",
+        tone: true,
+        placeholder: "La differenza tra lavoro vero e lavoro di facciata..."
+      }
+    ]
+  },
+  {
+    id: "communication_planning",
+    title: "Framework: Communication Planning",
+    subtitle: "Come progetti piani di comunicazione che funzionano.",
+    questions: [
+      {
+        id: "4_1",
+        text: "Quando devi progettare un piano di comunicazione \u2014 non un singolo contenuto, ma l'intero sistema \u2014 come lo strutturi?",
+        maps_to: "frameworks.json > communication_planning[0] > description, steps",
+        placeholder: "Il tuo approccio al piano di comunicazione..."
+      },
+      {
+        id: "4_2",
+        text: "Come chiami questo approccio? Quali sono i passaggi chiave, dal brief fino all'esecuzione?",
+        maps_to: "frameworks.json > communication_planning[0] > name, steps",
+        placeholder: "Nome del framework:\n\nStep 1:\nStep 2:\nStep 3:"
+      },
+      {
+        id: "4_3",
+        text: "Quando e il momento giusto per tirare fuori questo framework? C'e un segnale che ti dice \"qui serve questo approccio specifico\"?",
+        maps_to: "frameworks.json > communication_planning[0] > when_to_use",
+        placeholder: "I segnali che ti attivano..."
+      },
+      {
+        id: "4_4",
+        text: "Quali sono le regole che non infrangi mai quando progetti un piano di comunicazione?",
+        maps_to: "frameworks.json > communication_planning[0] > key_principles",
+        placeholder: "I tuoi principi sacri..."
+      },
+      {
+        id: "4_5",
+        text: "Hai un framework specifico per situazioni particolari? Comunicazione di crisi, lancio prodotto, riposizionamento, comunicazione interna...",
+        maps_to: "frameworks.json > communication_planning[1]",
+        placeholder: "Framework alternativi per casi specifici..."
+      },
+      {
+        id: "4_6",
+        text: "Quante volte hai visto un piano di comunicazione bellissimo su carta morire in esecuzione? Secondo te, dove si rompe di solito la catena?",
+        maps_to: "opinione forte su communication planning",
+        tone: true,
+        placeholder: "Dove muoiono i piani belli..."
+      }
+    ]
+  },
+  {
+    id: "content_strategy",
+    title: "Framework: Content Strategy",
+    subtitle: "Come trasformi il bisogno di 'fare contenuti' in strategia.",
+    questions: [
+      {
+        id: "5_1",
+        text: "Quando qualcuno dice \"dobbiamo fare contenuti\" \u2014 frase vaghissima \u2014 come trasformi quella richiesta in una strategia vera?",
+        maps_to: "frameworks.json > content_strategy[0] > description, steps",
+        placeholder: "Da richiesta vaga a strategia concreta..."
+      },
+      {
+        id: "5_2",
+        text: "Come chiami il tuo approccio alla content strategy? Quali sono gli step?",
+        maps_to: "frameworks.json > content_strategy[0] > name, steps",
+        placeholder: "Nome del framework:\n\nStep 1:\nStep 2:\nStep 3:"
+      },
+      {
+        id: "5_3",
+        text: "Quando funziona meglio questo framework? E quando invece il cliente ha bisogno di qualcosa di diverso \u2014 magari piu tattico o piu strategico?",
+        maps_to: "frameworks.json > content_strategy[0] > when_to_use",
+        placeholder: "Contesti ideali e limiti..."
+      },
+      {
+        id: "5_4",
+        text: "Quali sono i principi che consideri sacri nella content strategy? Le cose che ripeti a ogni cliente.",
+        maps_to: "frameworks.json > content_strategy[0] > key_principles",
+        placeholder: "I principi che ripeti sempre..."
+      },
+      {
+        id: "5_5",
+        text: "Hai un approccio specifico per il thought leadership? Per posizionare una persona \u2014 un CEO, un founder \u2014 come riferimento nel suo settore?",
+        maps_to: "frameworks.json > content_strategy[1]",
+        placeholder: "Il tuo metodo per il thought leadership..."
+      },
+      {
+        id: "5_6",
+        text: "Il content marketing e diventato un rumore di fondo. Tutti pubblicano, pochi hanno qualcosa da dire. Cosa separa il contenuto che funziona dal contenuto che occupa spazio?",
+        maps_to: "opinione forte su content strategy",
+        tone: true,
+        placeholder: "La tua visione su cosa funziona davvero..."
+      }
+    ]
+  },
+  {
+    id: "ai_business",
+    title: "AI & Business",
+    subtitle: "La tua visione sull'intelligenza artificiale nel lavoro e nel business.",
+    questions: [
+      {
+        id: "6_1",
+        text: "Come descriveresti il tuo rapporto con l'intelligenza artificiale? Quando hai iniziato a usarla seriamente nel tuo lavoro, e cosa e cambiato?",
+        maps_to: "profile.json > expertise_areas (AI), frameworks.json > ai_strategy",
+        placeholder: "Il tuo percorso con l'AI..."
+      },
+      {
+        id: "6_2",
+        text: "Quando un'azienda ti dice \"vogliamo usare l'AI ma non sappiamo da dove partire\", qual e il tuo approccio? Come li guidi?",
+        maps_to: "frameworks.json > ai_strategy[0] > description, steps",
+        placeholder: "Il tuo processo per guidare l'adozione dell'AI..."
+      },
+      {
+        id: "6_3",
+        text: "Hai un framework o un metodo per valutare dove l'AI ha senso in un business e dove e solo hype?",
+        maps_to: "frameworks.json > ai_strategy[0] > name, steps, when_to_use",
+        placeholder: "Nome (se ce l'ha):\n\nCome funziona:\n\nCriteri di valutazione:"
+      },
+      {
+        id: "6_4",
+        text: "Quali sono i principi che secondo te separano un'adozione intelligente dell'AI da una adozione di facciata?",
+        maps_to: "frameworks.json > ai_strategy[0] > key_principles",
+        placeholder: "I principi per un'AI adoption seria..."
+      },
+      {
+        id: "6_5",
+        text: "Raccontami un caso concreto in cui hai usato o guidato l'uso dell'AI in un contesto di business. Cosa avete fatto, cosa ha funzionato, cosa no.",
+        maps_to: "experience.json > ai_strategy[0]",
+        placeholder: "Contesto, sfida, approccio, risultato..."
+      },
+      {
+        id: "6_6",
+        text: "Qual e la tua opinione piu scomoda sull'AI nel business? Quella che la maggior parte delle persone nel tuo settore non vuole sentire.",
+        maps_to: "opinione forte su AI",
+        placeholder: "La tua hot take sull'AI..."
+      },
+      {
+        id: "6_7",
+        text: "Tra 3 anni, come pensi che l'AI avra cambiato il lavoro di chi fa strategia, comunicazione, branding? Cosa sopravvive e cosa no?",
+        maps_to: "visione futura, tono",
+        tone: true,
+        placeholder: "La tua visione del futuro del settore..."
+      }
+    ]
+  },
+  {
+    id: "experience",
+    title: "Esperienze e case study",
+    subtitle: "I progetti che raccontano chi sei. Per ognuno: contesto, sfida, approccio, risultato.",
+    questions: [
+      {
+        id: "7_1",
+        text: "Un progetto di brand positioning di cui vai particolarmente fiero. Tipo di azienda, settore, sfida, cosa hai fatto, risultato.",
+        maps_to: "experience.json > brand_positioning[0]",
+        placeholder: "Contesto:\nSfida:\nApproccio:\nRisultato:\nTag (3-4 parole chiave):"
+      },
+      {
+        id: "7_2",
+        text: "Un altro caso di brand positioning, possibilmente diverso dal primo \u2014 settore diverso, sfida diversa.",
+        maps_to: "experience.json > brand_positioning[1]",
+        placeholder: "Contesto:\nSfida:\nApproccio:\nRisultato:\nTag:"
+      },
+      {
+        id: "7_3",
+        text: "Un piano di comunicazione che ha funzionato bene. Qual era il contesto?",
+        maps_to: "experience.json > communication_planning[0]",
+        placeholder: "Contesto:\nSfida:\nApproccio:\nRisultato:\nTag:"
+      },
+      {
+        id: "7_4",
+        text: "Un altro caso di communication planning \u2014 magari uno dove le cose si sono complicate e hai dovuto adattare l'approccio in corsa.",
+        maps_to: "experience.json > communication_planning[1]",
+        placeholder: "Contesto:\nSfida:\nApproccio:\nRisultato:\nTag:"
+      },
+      {
+        id: "7_5",
+        text: "Un progetto di content strategy che consideri rappresentativo del tuo approccio.",
+        maps_to: "experience.json > content_strategy[0]",
+        placeholder: "Contesto:\nSfida:\nApproccio:\nRisultato:\nTag:"
+      },
+      {
+        id: "7_6",
+        text: "Un altro caso di content strategy \u2014 se possibile, uno dove il risultato ti ha sorpreso, in positivo o in negativo.",
+        maps_to: "experience.json > content_strategy[1]",
+        placeholder: "Contesto:\nSfida:\nApproccio:\nRisultato:\nTag:"
+      },
+      {
+        id: "7_7",
+        text: "Un caso in cui hai guidato o partecipato all'adozione dell'AI in un contesto aziendale. Com'e andata?",
+        maps_to: "experience.json > ai_strategy[0]",
+        placeholder: "Contesto:\nSfida:\nApproccio:\nRisultato:\nTag:"
+      },
+      {
+        id: "7_8",
+        text: "Un altro caso legato all'AI \u2014 puo essere anche un esperimento personale, un progetto side, qualcosa che hai costruito per capire come funziona.",
+        maps_to: "experience.json > ai_strategy[1]",
+        placeholder: "Contesto:\nSfida:\nApproccio:\nRisultato:\nTag:"
+      },
+      {
+        id: "7_9",
+        text: "Guardando tutti i progetti di cui abbiamo parlato: c'e un pattern? Un errore che vedi ripetersi nei clienti? Una cosa che fai sempre, indipendentemente dal progetto?",
+        maps_to: "pattern trasversale, philosophy",
+        tone: true,
+        placeholder: "Il filo rosso dei tuoi progetti..."
+      }
+    ]
+  },
+  {
+    id: "contact",
+    title: "Contatto e ingaggio",
+    subtitle: "Come trovarti e come lavori con i clienti.",
+    questions: [
+      {
+        id: "8_1",
+        text: "Email di lavoro, LinkedIn, sito web?",
+        maps_to: "contact.json > email, linkedin, website",
+        placeholder: "Email:\nLinkedIn:\nSito:"
+      },
+      {
+        id: "8_2",
+        text: "Come lavori con i clienti? Che formati offri? Per esempio: sessioni singole, progetti, advisory continuativo... Descrivili come li presenteresti a un potenziale cliente.",
+        maps_to: "contact.json > engagement_options",
+        placeholder: "Formato 1: ...\nFormato 2: ...\nFormato 3: ..."
+      },
+      {
+        id: "8_3",
+        text: "Come preferisci che un potenziale cliente ti contatti? C'e un modo che funziona meglio di altri? Qualcosa che vorresti sapessero prima di scriverti?",
+        maps_to: "contact.json > note",
+        placeholder: "Il primo passo ideale per chi vuole lavorare con te..."
+      },
+      {
+        id: "8_4",
+        text: "Ultima domanda, e volutamente aperta: c'e qualcosa che non ti ho chiesto e che avresti voluto dire? Qualcosa che senti importante per rappresentare chi sei professionalmente?",
+        maps_to: "campo libero \u2014 puo alimentare qualsiasi JSON",
+        tone: true,
+        placeholder: "Spazio libero..."
+      }
+    ]
+  }
+];
+
+const STORAGE_KEY = "pez-interview-responses";
+let currentSection = 0;
+
+// Load saved answers
+function loadAnswers() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+  } catch { return {}; }
+}
+
+function saveAnswers(answers) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
+  const indicator = document.getElementById("saved");
+  indicator.classList.add("show");
+  setTimeout(() => indicator.classList.remove("show"), 1200);
+}
+
+// Count answered questions
+function countAnswered() {
+  const answers = loadAnswers();
+  let total = 0, answered = 0;
+  SECTIONS.forEach(s => {
+    s.questions.forEach(q => {
+      total++;
+      if (answers[q.id] && answers[q.id].trim()) answered++;
+    });
+  });
+  return { total, answered };
+}
+
+function sectionAnswered(sectionIndex) {
+  const answers = loadAnswers();
+  const section = SECTIONS[sectionIndex];
+  let total = 0, answered = 0;
+  section.questions.forEach(q => {
+    total++;
+    if (answers[q.id] && answers[q.id].trim()) answered++;
+  });
+  return { total, answered };
+}
+
+// Render navigation
+function renderNav() {
+  const nav = document.getElementById("nav");
+  nav.innerHTML = "";
+  SECTIONS.forEach((s, i) => {
+    const { total, answered } = sectionAnswered(i);
+    const isComplete = answered === total && total > 0;
+    const item = document.createElement("div");
+    item.className = `nav-item${i === currentSection ? " active" : ""}${isComplete ? " completed" : ""}`;
+    item.onclick = () => goToSection(i);
+    item.innerHTML = `
+      <span class="step-num">${isComplete ? "\u2713" : i + 1}</span>
+      <span>${s.title}</span>
+      <span class="section-progress">${answered}/${total}</span>
+    `;
+    nav.appendChild(item);
+  });
+}
+
+// Render current section
+function renderSection() {
+  const content = document.getElementById("content");
+  const answers = loadAnswers();
+
+  content.innerHTML = "";
+
+  SECTIONS.forEach((section, si) => {
+    const div = document.createElement("div");
+    div.className = `section${si === currentSection ? " active" : ""}`;
+
+    let html = `
+      <div class="section-header">
+        <h2>${section.title}</h2>
+        <p>${section.subtitle}</p>
+      </div>
+    `;
+
+    section.questions.forEach((q, qi) => {
+      html += `
+        <div class="question-block">
+          <label class="question-label" for="${q.id}">
+            ${q.tone ? '<span class="tone-tag">tono</span>' : ""}
+            ${q.text}
+            <span class="maps-to">\u2192 ${q.maps_to}</span>
+          </label>
+          <textarea
+            id="${q.id}"
+            placeholder="${q.placeholder || ''}"
+            oninput="onAnswer('${q.id}', this.value)"
+          >${answers[q.id] || ""}</textarea>
+        </div>
+      `;
+    });
+
+    html += `
+      <div class="nav-buttons">
+        <button class="btn btn-prev" onclick="goToSection(${si - 1})" ${si === 0 ? "disabled" : ""}>
+          \u2190 Indietro
+        </button>
+        <button class="btn btn-next" onclick="goToSection(${si + 1})" ${si === SECTIONS.length - 1 ? "disabled" : ""}>
+          Avanti \u2192
+        </button>
+      </div>
+    `;
+
+    div.innerHTML = html;
+    content.appendChild(div);
+  });
+}
+
+function updateProgress() {
+  const { total, answered } = countAnswered();
+  const pct = total > 0 ? Math.round((answered / total) * 100) : 0;
+  document.getElementById("progress-text").textContent = `${pct}%`;
+  document.getElementById("progress-fill").style.width = `${pct}%`;
+}
+
+function goToSection(index) {
+  if (index < 0 || index >= SECTIONS.length) return;
+  currentSection = index;
+  renderNav();
+  renderSection();
+  window.scrollTo(0, 0);
+}
+
+let saveTimeout;
+function onAnswer(id, value) {
+  const answers = loadAnswers();
+  answers[id] = value;
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(() => {
+    saveAnswers(answers);
+    renderNav();
+    updateProgress();
+  }, 500);
+}
+
+function exportJSON() {
+  const answers = loadAnswers();
+  const exported = {
+    exported_at: new Date().toISOString(),
+    sections: {}
+  };
+
+  SECTIONS.forEach(section => {
+    const responses = {};
+    section.questions.forEach(q => {
+      responses[q.id] = {
+        question: q.text,
+        answer: answers[q.id] || "",
+        maps_to: q.maps_to,
+        is_tone_question: !!q.tone
+      };
+    });
+    exported.sections[section.id] = {
+      title: section.title,
+      responses
+    };
+  });
+
+  const blob = new Blob([JSON.stringify(exported, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "interview-responses.json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function resetAll() {
+  if (confirm("Sei sicuro? Questo cancellera tutte le risposte salvate.")) {
+    localStorage.removeItem(STORAGE_KEY);
+    currentSection = 0;
+    renderNav();
+    renderSection();
+    updateProgress();
+  }
+}
+
+// Init
+renderNav();
+renderSection();
+updateProgress();
+</script>
+</body>
+</html>

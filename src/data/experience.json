@@ -1,0 +1,59 @@
+{
+  "brand_positioning": [
+    {
+      "context": "Azienda di servizi IT/consulting (Arsenalia) formata dalla fusione di più sotto-aziende in un'unica realtà",
+      "challenge": "Creare da zero l'ecosistema di un brand che prima non esisteva, basato su una struttura organizzativa frammentata fatta di tanti sotto-brand. Gestire stakeholder non allineati che vedevano nella transizione una perdita di rilevanza, e una dimensione di change management dove le persone erano spiazzate.",
+      "approach": "Costruzione da zero di tutti gli strumenti di comunicazione verso il mercato. Lavoro di disseminazione interna per far digerire il nuovo brand. Gestione della transizione culturale: persuadere le persone che il senso di attaccamento al vecchio brand non sarebbe stato perso, ma trasferito alla nuova entità.",
+      "result": "Ecosistema di brand costruito e operativo. Transizione culturale completata con successo nonostante le resistenze interne.",
+      "tags": ["B2B", "services", "rebranding", "change-management", "merger", "internal-communication"]
+    },
+    {
+      "context": "Brand italiani (fashion, luxury, food) che volevano comunicare e vendere sul mercato cinese, attraverso Obor Consulting",
+      "challenge": "Scarsa competenza culturale dei brand occidentali nei confronti dello scenario cinese. Gli imprenditori italiani non concepivano le dinamiche relazionali tipiche del mondo cinese (come il guanxi) e presupponevano che il valore del Made in Italy fosse intrinseco, mentre in Cina la percezione dell'Italia è estremamente superficiale.",
+      "approach": "Fondazione di Obor Consulting per aiutare aziende italiane a fare business in Cina e viceversa. Lavoro di educazione culturale con gli imprenditori, speech a conferenze in Cina, consulenza diretta con imprenditori locali. Dimostrazione che l'adattamento va oltre la mera traduzione e presuppone competenza sulle aspettative del pubblico di riferimento.",
+      "result": "Molteplici brand supportati nell'ingresso nel mercato cinese con un approccio culturalmente consapevole. Riconoscimento come riferimento italiano per il digital marketing cross-border Italia-Cina.",
+      "tags": ["cross-border", "China", "luxury", "fashion", "internationalization", "cultural-adaptation", "Made-in-Italy"]
+    }
+  ],
+  "communication_planning": [
+    {
+      "context": "Brand del lusso (Bvlgari) — progetto di comunicazione digitale per il mercato cinese tramite WeChat",
+      "challenge": "Realizzare un mini-programma per WeChat legato a una mostra del brand a Chengdu, rispettando le specificità culturali e tecniche della piattaforma cinese.",
+      "approach": "Progettazione completa della UX e UI del mini-programma, con sviluppo affidato a un'agenzia locale. Integrazione tra le esigenze del brand globale e le consuetudini dell'ecosistema WeChat.",
+      "result": "Il mini-programma è stato menzionato da Tencent stessa tra le migliori applicazioni WeChat del periodo, presentato a un evento pubblico a Shanghai.",
+      "tags": ["luxury", "China", "WeChat", "digital", "UX", "Bvlgari", "award"]
+    },
+    {
+      "context": "Gara per il lancio di Netflix in Italia — agenzia di comunicazione (propria)",
+      "challenge": "Proporre a Netflix un approccio comunicativo per lo sbarco sul mercato italiano, differenziandosi in una gara competitiva.",
+      "approach": "Creazione di un progetto dove la proposta stessa era un atto di comunicazione: lo script di una serie TV per Netflix, con le persone dell'agenzia come protagonisti. La proposta non solo descriveva una strategia, la incarnava.",
+      "result": "Il progetto è piaciuto molto al cliente ma non è stato scelto per altri motivi. Rimane un esempio di come il medium può essere il messaggio e di come un approccio creativo alla gara può differenziarti radicalmente.",
+      "tags": ["entertainment", "pitch", "creative", "Netflix", "Italy-launch", "storytelling"]
+    }
+  ],
+  "content_strategy": [
+    {
+      "context": "Azienda di servizi IT/consulting (Arsenalia) — attività di media relations e PR",
+      "challenge": "Costruire un'attività di media relations da zero per un brand nuovo, con la necessità aggiuntiva di far comprendere internamente l'importanza e il peso della comunicazione verso le testate editoriali.",
+      "approach": "Media relations condotte con ottica strategica, sempre rispondenti ai valori identificati nel lavoro di brand positioning. Lavoro parallelo di disseminazione interna, usando la conoscenza delle dinamiche organizzative per far passare i concetti presso gli stakeholder chiave.",
+      "result": "Copertura mediatica ottenuta su testate rilevanti per il settore. Riconoscimento interno del valore delle media relations come strumento strategico, non solo tattico.",
+      "tags": ["B2B", "media-relations", "PR", "internal-alignment", "services"]
+    }
+  ],
+  "ai_strategy": [
+    {
+      "context": "Progetto personale / SaaS — Monday Routine (mondayroutine.com)",
+      "challenge": "Trasformare un processo completamente manuale (la creazione della rassegna stampa settimanale per il monitoring dei brand) in un prodotto digitale automatizzato basato sull'AI.",
+      "approach": "Sviluppo di un SaaS che recupera notizie su brand specificati dall'utente, le analizza con AI, filtra quelle rilevanti per il business (acquisizioni, nuove nomine, notizie importanti), deduplica le notizie ripetute tra testate diverse, e genera digest personalizzati inviati via email o Telegram.",
+      "result": "Prodotto funzionante e operativo. Quello che prima richiedeva una persona dedicata con il costo di un dipendente, ora è accessibile a poche decine di euro in modo più programmatico e preciso.",
+      "tags": ["AI", "SaaS", "automation", "media-monitoring", "product", "builder"]
+    },
+    {
+      "context": "Progetti personali / sperimentazione — AI Parental Control, NoDruma, sistemi agentici",
+      "challenge": "Esplorare le frontiere dell'AI applicata: content moderation in tempo reale, elaborazione audio, organizzazioni completamente agentiche.",
+      "approach": "Sviluppo di AI Parental Control (estensione Chrome che analizza pagine web in real-time e blocca contenuti non adatti ai minori usando le API di OpenAI). Sviluppo di NoDruma (SaaS che rimuove tracce di batteria da qualsiasi canzone su YouTube). Sperimentazione con strutture organizzative totalmente agentiche dove gli agenti AI si relazionano tra loro per costruire prodotti digitali.",
+      "result": "AI Parental Control usata da migliaia di utenti in oltre 50 paesi. NoDruma utilizzato da centinaia di batteristi nel mondo. Il progetto agentico è un esperimento in corso che genera insight sia sulla tecnologia che sulla psicologia delle organizzazioni.",
+      "tags": ["AI", "Chrome-extension", "SaaS", "agentic", "vibe-coding", "builder", "product", "global-users"]
+    }
+  ]
+}

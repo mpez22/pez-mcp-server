@@ -1,0 +1,8 @@
+name = "pez-mcp-server"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+routes = [
+  { pattern = "mcp.pezbot.it/*", zone_name = "pezbot.it" }
+]
